@@ -1,0 +1,27 @@
+<!-- src/app/heatmap/heatmap.component.html -->
+<div class="heatmap-wrapper">
+    <div class="heatmap-container">
+      <div *ngFor="let hour of hours; let i = index" class="heatmap-column">
+        <div class="hour-label">{{ hour }}:00</div>
+        <div [ngStyle]="{'background-color': getHeatmapColor(frequencyDistribution[i])}"
+             class="heatmap-cell">
+          {{ frequencyDistribution[i] }}
+        </div>
+      </div>
+    </div>
+    <div class="legend-container">
+      <div class="legend-title">Intensity Levels:</div>
+      <div class="legend">
+        <div *ngFor="let step of colorSteps"
+             [ngStyle]="{'background-color': getHeatmapColor(step)}"
+             class="legend-step">
+          {{ step }}
+        </div>
+      </div>
+      <div class="legend-description">
+        <span>Low</span>
+        <span style="margin-left: auto;">High</span>
+      </div>
+    </div>
+  </div>
+  
